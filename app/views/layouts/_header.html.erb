@@ -1,0 +1,33 @@
+<nav class="bg-darkpurple fixed w-full z-20 top-0 left-0 h-14">
+  <div class="container flex flex-wrap items-center justify-between mx-auto h-full">
+    <a href="<%= root_path %>" class="h-full flex items-center transition hover:bg-mediumpurple px-6">
+        <%= image_tag "logo.svg", class: "h-6 mr-3 sm:h-9", alt: "logo" %>
+        <h1 class="font-extrabold md:text-3xl lg:text-4xl">
+          <span class="bg-clip-text text-transparent bg-blue-400">Members</span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Only!!</span>
+        </h1>
+    </a>
+    <div class="h-full items-center justify-between w-auto order-1 mr-2 md:mr-4" id="navbar-sticky">
+      <ul class="h-full items-center flex flex-row mt-0 md:text-base text-xs font-medium border-0">
+        <% links_class = "h-full items-center px-2 flex bg-transparent text-purple-400 transition hover:bg-mediumpurple hover:text-white" %>
+        <li class="h-full items-center">
+          <%= link_to 'Articles', root_path, class: links_class %>
+        </li>
+        <li class="h-full items-center">
+          <% if current_user %>
+            <%= link_to 'Profile', user_path(current_user), class: links_class %>
+          <% else %>
+            <%= link_to 'Sign Up', new_user_path, class: links_class %>
+          <% end %>
+        </li>
+        <li class="h-full items-center">
+          <% if current_user %>
+            <%= link_to 'Log out', logout_path, method: :delete, class: links_class %>
+          <% else %>
+            <%= link_to 'Log In', login_path, class: links_class %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

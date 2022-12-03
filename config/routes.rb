@@ -6,13 +6,16 @@ Rails.application.routes.draw do
 
   # Add a root route if you don't have one...
   # We can use users#new for now, or replace this with the controller and action you want to be the site root:
-  root 'users#new'
+  root 'pages#home'
 
   # sign up page with form:
   get 'users/new', to: 'users#new', as: :new_user
 
   # create (post) action for when sign up form is submitted:
-  post 'users', to: 'users#create'
+  post 'users/', to: 'users#create'
+
+  # show profile page for a user:
+  get 'users/:id', to: 'users#show', as: :user
 
   # log in page with form:
   get '/login', to: 'sessions#new'
@@ -21,15 +24,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   # delete action to log out:
-  delete '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
-  # TO ACCES THE /LOGOUT ROUTE, YOU NEED TO USE:
-  # <%= link_to 'Log out', logout_path, method: :delete %>
-
-  # now implement the above routes using the resources method:
-  #root 'users#new'
-  #resources :users, only: %i[create]
-  #get 'users/new', to: 'users#new', as: :new_user
-  #resources :sessions, only: %i[new create destroy]
+  # pages:
+  get 'contact', to: 'pages#contact'
+  get 'about', to: 'pages#about'
 end
