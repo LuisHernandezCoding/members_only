@@ -11,17 +11,22 @@ class UsersController < ApplicationController
 
     if @user.save
       # If user saves in the db successfully:
-      flash[:notice] = 'Account created successfully!'
-      redirect_to root_path
+      flash[:success] = 'Account created successfully!'
+      redirect_to login_path
     else
       # If user fails model validation - probably a bad password or duplicate email:
-      flash.now[:alert] = "Oops, couldn't create account. Please make sure you are using a valid email and password."
+      flash.now[:error] = "Oops, couldn't create account. Please make sure you are using a valid email and password."
       render :new, status: :unprocessable_entity, locals: { user: @user }
     end
   end
 
   def show
     @user = User.find(params[:id])
+    @funny_titles = ['Lord of the cats', 'Master of the universe', 'King of the world', 'God of the universe',
+                     'Master of the cats', 'King of the universe', 'God of the world', 'Lord of the universe',
+                     'Master of the world', 'God of the cats', 'King of the cats', 'Lord of the world',
+                     'Master of the cats', 'King of the universe', 'God of the universe', 'Lord of the cats',
+                     'Master of the world', 'God of the world', 'Lord of the universe']
   end
 
   private

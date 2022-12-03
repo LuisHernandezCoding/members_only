@@ -14,21 +14,34 @@
             <% square_class = "pt-1 rounded w-full" %>
             <% square_label = "block text-gray-200 text-sm font-bold mb-2 ml-3" %>
             <% square_input = "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3" %>
+            <% square_error = "text-red-500 text-xs italic" %>
             <div class="<%= square_class %>">
               <%= f.label :name, class: square_label %>
               <%= f.text_field :name, autofocus: true, class: square_input %>
+              <% if @user.errors.messages[:name] %>
+                <div class="<%= square_error %>"><%= @user.errors.messages[:name].join(", ") %></div>
+              <% end %>
             </div>
             <div class="<%= square_class %>">
               <%= f.label :email, class: square_label %>
               <%= f.text_field :email, class: square_input %>
+              <% if @user.errors.messages[:email] %>
+                <div class="<%= square_error %>"><%= @user.errors.messages[:email].join(", ") %></div>
+              <% end %>
             </div>
             <div class="<%= square_class %>">
               <%= f.label :password, class: square_label %>
               <%= f.password_field :password, class: square_input %>
+              <% if @user.errors.messages[:password] %>
+                <div class="<%= square_error %>"><%= @user.errors.messages[:password].join(", ") %></div>
+              <% end %>
             </div>
             <div class="<%= square_class %>">
               <%= f.label :password_confirmation, class: square_label %>
               <%= f.password_field :password_confirmation, class: square_input %>
+              <% if @user.errors.messages[:password_confirmation] %>
+                <div class="<%= square_error %>"><%= @user.errors.messages[:password_confirmation].join(", ") %></div>
+              <% end %>
             </div>
           </div>
           <div class="flex w-12/12 mt-4 mx-6">
