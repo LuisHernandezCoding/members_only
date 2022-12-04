@@ -15,7 +15,11 @@
     <main class="h-screen pl-6 pr-6">
       <%= render "layouts/header" %>
       <%= render partial: "layouts/flash" %>
-      <%= yield %>
+      <div class="flex flex-row justify-center items-center h-screen">
+        <div class="container mx-auto my-5 p-5">
+          <%= yield %>
+        </div>
+      </div>
       <%= render "layouts/footer" %>
     </main>
   </body>

@@ -29,4 +29,7 @@ Rails.application.routes.draw do
   # pages:
   get 'contact', to: 'pages#contact'
   get 'about', to: 'pages#about'
+
+  # articles:
+  resources :articles
 end

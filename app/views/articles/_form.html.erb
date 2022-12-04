@@ -1,0 +1,13 @@
+<%= form_with model: article do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title, placeholder: "Enter Your Name", maxlength: 20 %>
+  <% article.errors.full_messages_for(:title).each do |message| %>
+    <%= message %>
+  <% end %>
+  <%= form.label :body %>
+  <%= form.text_area :body, placeholder: "Enter the body", oninput: 'this.style.height = "";this.style.height = this.scrollHeight + "px"', maxlength: 300 %>
+  <% article.errors.full_messages_for(:body).each do |message| %>
+    <%= message %>
+  <% end %>
+  <%= form.submit %>
+<% end %>

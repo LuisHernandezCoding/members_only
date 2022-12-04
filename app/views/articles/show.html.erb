@@ -1,0 +1,30 @@
+<section id="content">
+  <section id="hero" class="computer"></section>
+  <section id="container">
+    <div id="form-container">
+      <div class="title"><%= @article.title %></div>
+      <div class="subtitle"><%= @article.subtitle %></div>
+      <div class="body"><%= @article.body %></div>
+      <div class="fields fields_show_article">
+        <div class="buttons">
+          <%= link_to "Modify", edit_article_path(@article) %>
+          <%= link_to "Delete", article_path(@article), data: {
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure?"
+                            } %>
+        </div>
+        <h2>Add a comment:</h2>
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </section>
+
+</section>
+<% if @article.comments.any? && @article.comments.first.persisted? %>
+  <section>
+    <div class="notice"><%= notice %></div>
+    <div class="title">Comments</div>
+    <div class="subtitle">Check out all our comments</div>
+    <%= render @article.comments.order(created_at: :desc) %>
+  </section>
+<% end %>

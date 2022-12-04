@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       # Save the user.id in that user's session cookie:
       session[:user_id] = user.id.to_s
       flash[:success] = 'Successfully logged in!'
-      redirect_to root_path
+      redirect_to user_path(user)
     else
       # if email or password incorrect, re-render login page:
       flash.now[:error] = 'Incorrect email or password, try again.'
