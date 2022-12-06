@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  
+  <% cookies[:dark_mode] = 'light' if cookies[:dark_mode].nil? %>
   <body class="<%= cookies[:dark_mode] %> bg-cover bg-fixed bg-center h-screen" style="background-image: url(<%= image_url(cookies[:dark_mode] + '.png') %>)">
     <main class="h-screen pl-6 pr-6">
       <%= render "layouts/header" %>
