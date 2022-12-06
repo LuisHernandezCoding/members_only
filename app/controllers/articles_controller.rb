@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authorize, except: [:index, :show]
+  before_action :authorize, except: %i[index show]
 
   def index
     @articles = Article.all
