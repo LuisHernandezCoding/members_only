@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html class="">   
   <head>
     <title>MembersOnly</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <%= yield %>
+  <% cookies[:dark_mode] = 'light' if cookies[:dark_mode].nil? %>
+  <body class="<%= cookies[:dark_mode] %> bg-cover bg-fixed bg-center h-screen" style="background-image: url(<%= image_url(cookies[:dark_mode] + '.png') %>)">
+    <main class="h-screen pl-6 pr-6">
+      <%= render "layouts/header" %>
+      <%= render partial: "layouts/flash" %>
+      <div class="flex flex-row h-auto">
+        <div class="mx-auto px-5 w-full">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render "layouts/footer" %>
+    </main>
   </body>
 </html>
