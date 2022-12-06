@@ -2,68 +2,64 @@
     <!-- Left Side -->
     <div class="w-full md:w-3/12 md:mx-2">
         <!-- Profile Card -->
-        <div class="bg-white p-3 border-t-4 border-green-400">
-            <div class="image overflow-hidden">
-                <img class="h-auto w-full mx-auto"
-                    src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                    alt="">
+        <div class="border-gray-400 border">
+            <div class="bg-white opacity-90 p-3 border-t-4 border-green-400">
+                <div class="image overflow-hidden">
+                    <img class="h-auto w-full mx-auto"
+                        src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                        alt="">
+                </div>
+                <h1 class="text-gray-900 font-bold text-xl leading-8 my-1"><%= @user.name %></h1>
+                <h3 class="text-gray-600 font-lg text-semibold leading-6"><%= @funny_titles.sample %></h3>
+                <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
+                    NOT IMPLEMENTED YET
+                </p>
+                <ul
+                    class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                    <li class="flex items-center py-3">
+                        <span>Status</span>
+                        <span class="ml-auto"><span class="bg-gray-500 py-1 px-2 rounded text-white text-sm">NOT IMPLEMENTED</span></span>
+                    </li>
+                    <li class="flex items-center py-3">
+                        <span>Member since</span>
+                        <span class="ml-auto"><%= @user.created_at.strftime("%d/%m/%Y") %></span>
+                    </li>
+                    <li class="flex items-center py-3">
+                        <span>Last article</span>
+                        <span class="ml-auto">
+                            <% if @user.articles.last %>
+                                <%= @user.articles.last.created_at.strftime("%d/%m/%Y") %>
+                            <% else %>
+                                No articles yet
+                            <% end %>
+                        </span>
+                    </li>
+                </ul>
             </div>
-            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1"><%= @user.name %></h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6"><%= @funny_titles.sample %></h3>
-            <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-                consectetur adipisicing elit.
-                Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
-            <ul
-                class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                <li class="flex items-center py-3">
-                    <span>Status</span>
-                    <span class="ml-auto"><span
-                            class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
-                </li>
-                <li class="flex items-center py-3">
-                    <span>Member since</span>
-                    <span class="ml-auto">Nov 07, 2016</span>
-                </li>
-            </ul>
         </div>
         <!-- End of profile card -->
         <div class="my-4"></div>
         <!-- Friends card -->
-        <div class="bg-white p-3 hover:shadow">
-            <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
-                <span class="text-green-500">
-                    <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                </span>
-                <span>Similar Profiles</span>
-            </div>
-            <div class="grid grid-cols-3">
-                <div class="text-center my-2">
-                    <img class="h-16 w-16 rounded-full mx-auto"
-                        src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                        alt="">
-                    <a href="#" class="text-main-color">Kojstantin</a>
+        <div class="border-gray-400 border">
+            <div class="bg-white opacity-90 p-3 hover:shadow">
+                <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                    <span class="text-green-500">
+                        <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </span>
+                    <span>Last Post</span>
                 </div>
-                <div class="text-center my-2">
-                    <img class="h-16 w-16 rounded-full mx-auto"
-                        src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
-                        alt="">
-                    <a href="#" class="text-main-color">James</a>
-                </div>
-                <div class="text-center my-2">
-                    <img class="h-16 w-16 rounded-full mx-auto"
-                        src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                        alt="">
-                    <a href="#" class="text-main-color">Natie</a>
-                </div>
-                <div class="text-center my-2">
-                    <img class="h-16 w-16 rounded-full mx-auto"
-                        src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
-                        alt="">
-                    <a href="#" class="text-main-color">Casey</a>
+                <div class="p-6">
+                    <% if @user.articles.last %>
+                        <a href="<%= article_path(@user.articles.last) %>"
+                            class="text-2xl text-gray-700 font-bold hover:text-gray-600 hover:underline"><%= @user.articles.last.title %></a>
+                        <p class="mt-2 text-gray-600"><%= @user.articles.last.body.truncate(100) %></p>
+                    <% else %>
+                        <p class="mt-2 text-gray-600">No articles yet</p>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -73,7 +69,7 @@
     <div class="w-full md:w-9/12 mx-2 h-64">
         <!-- Profile tab -->
         <!-- About Section -->
-        <div class="bg-white p-3 shadow-sm rounded-sm">
+        <div class="bg-white opacity-90 p-3 shadow-sm rounded-sm border-gray-400 border">
             <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <span clas="text-green-500">
                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -83,42 +79,43 @@
                     </svg>
                 </span>
                 <span class="tracking-wide">About</span>
+                <span class="ml-auto"><span class="bg-gray-500 py-1 px-2 rounded text-white text-sm">NOT IMPLEMENTED</span></span>
             </div>
             <div class="text-gray-700">
                 <div class="grid md:grid-cols-2 text-sm">
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">First Name</div>
-                        <div class="px-4 py-2">Jane</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Last Name</div>
-                        <div class="px-4 py-2">Doe</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Gender</div>
-                        <div class="px-4 py-2">Female</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Contact No.</div>
-                        <div class="px-4 py-2">+11 998001001</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Current Address</div>
-                        <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                        <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Email.</div>
                         <div class="px-4 py-2">
-                            <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                            <a class="text-blue-800" href="mailto:A@example.com">NOT IMPLEMENTED YET</a>
                         </div>
                     </div>
                     <div class="grid grid-cols-2">
                         <div class="px-4 py-2 font-semibold">Birthday</div>
-                        <div class="px-4 py-2">Feb 06, 1998</div>
+                        <div class="px-4 py-2">NOT IMPLEMENTED YET</div>
                     </div>
                 </div>
             </div>
@@ -131,7 +128,7 @@
         <div class="my-4"></div>
 
         <!-- Experience and education -->
-        <div class="bg-white p-3 shadow-sm rounded-sm">
+        <div class="bg-white opacity-90 p-3 shadow-sm rounded-sm border-gray-400 border">
 
             <div class="grid grid-cols-2">
                 <div>
@@ -146,14 +143,6 @@
                         <span class="tracking-wide">Experience</span>
                     </div>
                     <ul class="list-inside space-y-2">
-                        <li>
-                            <div class="text-teal-600">Owner at Her Company Inc.</div>
-                            <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                        </li>
-                        <li>
-                            <div class="text-teal-600">Owner at Her Company Inc.</div>
-                            <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                        </li>
                         <li>
                             <div class="text-teal-600">Owner at Her Company Inc.</div>
                             <div class="text-gray-500 text-xs">March 2020 - Now</div>
@@ -181,10 +170,6 @@
                     <ul class="list-inside space-y-2">
                         <li>
                             <div class="text-teal-600">Masters Degree in Oxford</div>
-                            <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                        </li>
-                        <li>
-                            <div class="text-teal-600">Bachelors Degreen in LPU</div>
                             <div class="text-gray-500 text-xs">March 2020 - Now</div>
                         </li>
                     </ul>

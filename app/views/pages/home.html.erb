@@ -1,34 +1,41 @@
 <section class="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
   <!--Left Col-->
   <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-    <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+    <h1 class="my-4 text-3xl md:text-5xl text-black dark:text-white opacity-75 font-bold leading-tight text-center md:text-left">
       Welcome to
-      <span class="bg-clip-text text-transparent bg-blue-400">Members</span>
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Only!!</span>
+      <span class="bg-clip-text text-transparent bg-blue-600 dark:bg-blue-400">Members</span>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r
+      from-blue-600 via-purple-500 to-pink-500
+      dark:from-blue-400 dark:via-purple-500 dark:to-pink-500">Only!!</span>
       Give us a try!
     </h1>
-    <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left text-white">
+    <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left text-gray-800 dark:text-gray-200">
       Just a few clicks and you're in! Register now and get access to our exclusive members-only content.
     </p>
+    <div class="w-full md:w-1/2 lg:w-2/3">
+      <a href="<%= articles_path %>" class="inline-flex items-center w-full justify-center mx-auto p-3 font-extrabold rounded-md 
+      hover:bg-opacity-50 dark:hover:bg-opacity-50  bg-purple-900 dark:bg-purple-200 transition duration-200 text-gray-100 dark:text-purple-900 hover:text-purple-200">
+        <span class="ml-2 text-xl font-bold">Read our articles</span>
+      </a>
+    </div>
   </div>
 
   <!--Right Col-->
-  <div class="w-full xl:w-3/5 p-5 overflow-hidden">
-    <img class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="<%= image_path 'home.svg' %>">
+  <div class="w-full xl:w-3/5 p-10 overflow-hidden">
+    <img class="mx-auto w-full transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="<%= image_path 'home.svg' %>">
   </div>
-
-  <div class="mt-10 space-y-20">
-    <a class="w-full" href="<%= articles_path %>">
-      <div class="flex-1 h-full w-80 mx-auto">
-        <div class="flex w-full bg-white shadow rounded-lg py-4 px-16">
-          <p class="m-auto inset-0 text-xl font-semibold leading-7 text-center text-gray-800">Read our articles</p>
-          <div class="">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </a>
+  <div class="w-full flex flex-row justify-center items-center space-x-4">
+    <div class="w-full md:w-1/2">
+      <a href="<%= login_path %>" class="inline-flex items-center w-full justify-center mx-auto p-3 font-extrabold rounded-md 
+      bg-purple-900 dark:bg-purple-200 hover:bg-opacity-50 dark:hover:bg-opacity-50 transition duration-200 text-gray-100 dark:text-purple-900 hover:text-purple-200">
+        <span class="ml-2 text-xl font-bold">Log in</span>
+      </a>
+    </div>
+    <div class="w-full md:w-1/2">
+      <a href="<%= new_user_path %>" class="inline-flex items-center w-full justify-center mx-auto p-3 font-extrabold rounded-md 
+      bg-purple-900 dark:bg-purple-200 hover:bg-opacity-50 dark:hover:bg-opacity-50 transition duration-200 text-gray-100 dark:text-purple-900 hover:text-purple-200">
+        <span class="ml-2 text-xl font-bold">Sign up</span>
+      </a>
+    </div>
   </div>
 </section>

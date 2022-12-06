@@ -1,65 +1,88 @@
-<section class="container mx-auto flex flex-wrap flex-col md:flex-row items-center mt-20">
-  <div class="flex flex-col w-full xl:w-1/3 justify-center lg:items-start overflow-y-hidden">
-    <div class="flex flex-col w-full lg:w-3/4 justify-center items-start py-14 px-6 text-white">
+<section class="container mx-auto flex flex-wrap flex-col sm:flex-row items-center">
+  <div class="flex flex-col w-full md:w-2/2 lg:w-1/3 justify-center xl:items-end overflow-y-hidden text-center xl:text-right">
+    <div class="flex flex-col w-full justify-center items-center xl:items-end px-6 text-gray-800 dark:text-gray-200
 			<p class="uppercase tracking-loose">Welcome our to</p>
 			<h1 class="font-bold text-3xl my-4">Articles Dashboard</h1>
 			<p class="leading-normal mb-4">Here you will find all our articles. You can read them and even create your own if you are a member!</p>
       <p class="leading-normal mb-4">Plus when you are a member you can comment on articles and even vote on them!</p>
-			<a href="<%= new_article_path %>" class="bg-transparent hover:bg-gray-100 text-gray-100 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-gray-100 hover:border-transparent transition">Create an article</a>
+			<a href="<%= new_article_path %>" class="bg-transparent hover:bg-gray-500 rounded shadow hover:shadow-lg py-2 px-4 border border-gray-900 dark:border-gray-100 hover:border-transparent transition">Create an article</a>
 		</div>
   </div>
-  <div class="flex flex-col w-full xl:w-1/3 justify-center lg:items-center overflow-y-hidden p-4">    
+  <div class="flex flex-col w-full md:w-1/2 lg:w-1/3 justify-center lg:items-center overflow-y-hidden p-4 md:p-16 md:py-4 py-2 break-all">    
     <% if @articles.any? %>
       <% @articles.order('created_at DESC').limit(1).each do |article| %>
         <a href="<%= article_path(article) %>" class="transform -rotate-0 transition duration-700 ease-in-out hover:rotate-3">
-          <figure class="flex flex-col items-center justify-center p-8 text-center border-gray-300 bg-white bg-opacity-70 hover:bg-opacity-75 backdrop-blur-3xl border rounded-lg shadow-sm hover:shadow-lg transition">
-            <h3 class="font-bold text-3xl py-4 border-b border-gray-700 w-full text-center text-gray-700">Last Article</h3>
-            <blockquote class="w-full mx-auto mb-4 lg:mb-8">
-              <h3 class="font-semibold text-gray-900 text-2xl my-4"><%= article.title %></h3>
-              <p class="my-4 font-light text-gray-900"><%= article.body.truncate(144) %></p>
+          <figure class="flex flex-col items-center justify-center p-2 text-center backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-lg transition">
+            <h3 class="font-bold text-3xl pb-4 border-b border-gray-700 w-full text-center text-gray-700 dark:text-gray-200">Last Article</h3>
+            <blockquote class="w-full mx-auto mb-2 text-gray-900 dark:text-gray-100">
+              <h3 class="font-semibold text-lg my-4"><%= article.title %></h3>
+              <p class="my-4 font-light text-sm"><%= article.body.truncate(280) %></p>
             </blockquote>
-            <figcaption class="flex items-center justify-center space-x-3">
-              <div class="text-sm font-light text-gray-500"><%= article.created_at.strftime("%B %d, %Y") %></div>
-              <div class="text-gray-500">- <%= article.user.name %></div>
+            <figcaption class="flex flex-col items-center justify-center space-x-3 text-gray-900 dark:text-gray-100">
+              <div class="text-sm font-light"><%= article.created_at.strftime("%B %d, %Y") %> - <%= article.user.name %></div>
+              <div class="text-sm font-light"><%= article.comments.count %> comments</div>
             </figcaption>
           </figure>
         </a>
       <% end %>
     <% else %>
-      <figure class="flex flex-col items-center justify-center p-8 text-center border-gray-100 bg-white bg-opacity-20 backdrop-blur-3xl border rounded-lg shadow-lg">
-        <h3 class="font-bold text-3xl py-4 border-b border-gray-100 w-full text-center text-white">Last Article</h3>
-        <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8">
-            <h3 class="font-semibold text-gray-100 text-2xl my-4">No articles yet</h3>
-          <p class="my-4 font-light text-gray-100">Be the first to create an article!</p>
+          <figure class="flex flex-col items-center justify-center p-2 text-center backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-lg transition">
+            <h3 class="font-bold text-3xl pb-4 border-b border-gray-700 w-full text-center text-gray-700 dark:text-gray-200">Last Article</h3>
+            <blockquote class="w-full mx-auto mb-2 text-gray-900 dark:text-gray-100">
+            <h3 class="font-semibold text-2xl my-4">No articles yet</h3>
+          <p class="my-4 font-light">Be the first to create an article!</p>
         </blockquote>
-          <figcaption class="flex items-center justify-center space-x-3">
+            <figcaption class="flex items-center justify-center space-x-3 text-gray-900 dark:text-gray-100">
             <a href="<%= new_article_path %>" class="bg-transparent hover:bg-gray-100 text-gray-100 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-gray-100 hover:border-transparent transition">Create an article</a>
             <a href="<%= new_user_path %>" class="bg-transparent hover:bg-gray-100 text-gray-100 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-gray-100 hover:border-transparent transition">Sign up</a>
           </figcaption>
       </figure>
     <% end %>
   </div>
-  <div class="flex flex-col w-full xl:w-1/3 justify-center lg:items-center overflow-y-hidden p-4">    
-    <figure class="flex flex-col items-center justify-center p-8 text-center border-gray-100 bg-white bg-opacity-10 backdrop-blur-3xl border rounded-lg shadow-lg">
-			<h3 class="font-bold text-3xl py-4 border-b border-gray-100 w-full text-center text-white">Most commented</h3>
-
-    </figure>
+  <div class="flex flex-col w-full md:w-1/2 lg:w-1/3 justify-center lg:items-center overflow-y-hidden p-4 md:p-16 md:py-4 py-2 break-all">    
+    <% if @articles.any? %>
+      <% # lets get the most commented article %>
+      <% article = @articles.max_by { |article| article.comments.count } %>
+      <a href="<%= article_path(article) %>" class="transform -rotate-0 transition duration-700 ease-in-out hover:rotate-3">
+        <figure class="flex flex-col items-center justify-center p-2 text-center backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-lg transition">
+          <h3 class="font-bold text-3xl pb-4 border-b border-gray-700 w-full text-center text-gray-700 dark:text-gray-200">Most Commented</h3>
+          <blockquote class="w-full mx-auto mb-2 text-gray-900 dark:text-gray-100">
+            <h3 class="font-semibold text-lg my-4"><%= article.title %></h3>
+            <p class="my-4 font-light text-sm"><%= article.body.truncate(280) %></p>
+          </blockquote>
+          <figcaption class="flex flex-col items-center justify-center space-x-3 text-gray-900 dark:text-gray-100">
+            <div class="text-sm font-light"><%= article.created_at.strftime("%B %d, %Y") %> - <%= article.user.name %></div>
+            <div class="text-sm font-light"><%= article.comments.count %> comments</div>
+          </figcaption>
+        </figure>
+      </a>
+    <% else %>
+      <figure class="flex flex-col items-center justify-center p-2 text-center backdrop-blur-sm border rounded-lg shadow-sm hover:shadow-lg transition">
+        <h3 class="font-bold text-3xl pb-4 border-b border-gray-700 w-full text-center text-gray-700 dark:text-gray-200">Most Commented</h3>
+        <blockquote class="w-full mx-auto mb-2 text-gray-900 dark:text-gray-100">
+          <h3 class="font-semibold text-2xl my-4">No articles yet</h3>
+          <p class="my-4 font-light">Be the first to create an article!</p>
+        </blockquote>
+        <figcaption class="flex items-center justify-center space-x-3 text-gray-900 dark:text-gray-100">
+          <a href="<%= new_article_path %>" class="bg-transparent hover:bg-gray-100 text-gray-100 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-gray-100 hover:border-transparent transition">Create an article</a>
+          <a href="<%= new_user_path %>" class="bg-transparent hover:bg-gray-100 text-gray-100 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-gray-100 hover:border-transparent transition">Sign up</a>
+        </figcaption>
+      </figure>
+    <% end %>
   </div>
 </section>
-<section class="container mx-auto flex flex-wrap flex-col md:flex-row items-center mb-10">
-  <div class="flex flex-col w-full justify-center lg:items-start overflow-y-hidden">
-
-  </div>
+<section class="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
+  <div class="flex flex-col w-full justify-center lg:items-start overflow-y-hidden"></div>
   <!-- Snippet -->
   <div class="w-full p-5 overflow-hidden">
     <!-- Table -->
-    <div class="w-full mx-auto bg-white  bg-opacity-70 shadow-lg rounded-sm border border-gray-200">
-      <header class="px-5 py-4 border-b border-gray-100">
+    <div class="w-full mx-auto bg-white bg-opacity-90 shadow-lg rounded border border-gray-400">
+      <header class="px-5 py-4 border-b border-gray-500">
         <h2 class="font-semibold text-gray-800">Articles</h2>
       </header>
       <div class="p-3">
         <table class="table-auto w-full">
-          <thead class="text-xs font-semibold uppercase text-gray-500 bg-gray-50">
+          <thead class="text-xs font-semibold uppercase text-gray-100 bg-gray-500 border-b">
             <tr>
               <th class="p-2 hidden xl:table-cell">
                 <div class="font-semibold">ID</div>
@@ -78,9 +101,6 @@
               </th>
               <th class="p-2 hidden xl:table-cell">
                 <div class="font-semibold">Comments</div>
-              </th>
-              <th class="p-2 hidden md:table-cell">
-                <div class="font-semibold">Actions</div>
               </th>
             </tr>
           </thead>
@@ -110,12 +130,8 @@
                     <div class="text-sm text-gray-700 text-center"><%= article.created_at.strftime("%H:%M") %></div>
                   </td>
                   <td class="p-2 hidden xl:table-cell">
-                    <div class="text-sm text-center">0</div>
+                    <div class="text-sm text-center"><%= article.comments.count %></div>
                   </td>
-                  <td class="p-2 hidden md:table-cell">
-                    <div class="text-sm text-center">o - o - o</div>
-                  </td>
-                    
                 </tr>
               <% end %>
             <% else %>

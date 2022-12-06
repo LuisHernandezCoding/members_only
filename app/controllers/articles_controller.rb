@@ -40,10 +40,13 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.comments.destroy_all
-    @article.destroy
-
-    redirect_to articles_path, status: :see_other
+    if @article.user == current_user
+      @article.destroy
+      @article.comments.destroy_all
+      redirect_to articles_path, status: :see_other
+    else
+      redirect_to @article, notice: "You can't delete this article"
+    end
   end
 
   private

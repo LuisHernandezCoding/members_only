@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   # sign up page with form:
-  get 'users/new', to: 'users#new', as: :new_user
+  get 'register', to: 'users#new', as: :new_user
 
   # create (post) action for when sign up form is submitted:
   post 'users/', to: 'users#create'
@@ -30,6 +30,12 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact'
   get 'about', to: 'pages#about'
 
+  # dark mode:
+  get 'dark_mode', to: 'application#dark_mode'
+  get 'light_mode', to: 'application#light_mode'
+
   # articles:
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end

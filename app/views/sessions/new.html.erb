@@ -1,15 +1,15 @@
-<div class="flex flex-row justify-center items-center h-screen">
-  <section class="container py-10 flex flex-wrap flex-col items-center md:w-1/2 w-full">
-    <main class="max-w-1/4 p-6 mt-10 rounded-lg backdrop-blur-3xl shadow-2xl">
+<div class="flex flex-row justify-center items-center gap-8">
+  <section class="container flex-col items-center md:w-1/2 w-full flex flex-wrap">
+    <main class="max-w-1/4 p-6 rounded-lg backdrop-blur-sm shadow-2xl dark:shadow-gray-800 dark:shadow-lg">
       <section>
-        <h3 class="text-gray-50 font-bold text-2xl text-center">Welcome to Members-Only!!</h3>
-        <p class="text-gray-100 pt-2 text-center">Sign in to your account.</p>
+        <h3 class="text-gray-800 dark:text-gray-50 font-bold text-2xl text-center">Welcome to Members-Only!!</h3>
+        <p class="text-gray-700 dark:text-gray-100 pt-2 text-center">Sign in to your account.</p>
       </section>
       <section class="mt-10">
         <%= form_for :login do |f| %>
           <div class="flex flex-col justify-between">
             <% square_class = "pt-1 rounded w-full" %>
-            <% square_label = "block text-gray-200 text-sm font-bold mb-2 ml-3" %>
+            <% square_label = "block text-gray-800 dark:text-gray-200 text-sm font-bold mb-2 ml-3" %>
             <% square_input = "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3" %>
             <% square_error = "text-red-500 text-xs italic" %>
             <div class="<%= square_class %>">
@@ -21,35 +21,23 @@
               <%= f.password_field :password, class: square_input %>
             </div>
             <div class="flex w-12/12 mt-4 mx-6">
-              <%= f.submit "Log in!", class: "w-full bg-mediumpurple hover:bg-darkpurple text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 block" %>
+              <%= f.submit "Log in!", class: "w-full cursor-pointer bg-mediumpurple hover:bg-darkpurple text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 block" %>
             </div>
           </div>
         <% end %>
       </section>
     </main>
     <div class="max-w-lg mx-auto text-center xl:mt-12 mb-6">
-        <p class="text-white">Don't have an account? <a href="<%= new_user_path %>" class="font-bold hover:underline">Sign up</a>.</p>
+        <p class="text-gray-900 dark:text-gray-100">Don't have an account? <a href="<%= new_user_path %>" class="font-bold hover:underline">Sign up</a>.</p>
     </div>
   </section>
-  <section class="container mx-auto flex-wrap flex-col items-start hidden md:flex p-10 ">
-    <div class="text-gray-200 sm:text-lg">
-      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-100">Members-Only</h2>
-      <p class="mb-8 font-light lg:text-xl">A place for members to share their thoughts and ideas. Debate, discuss, and share your thoughts with other members. not a member? <a href="<%= new_user_path %>" class="font-bold hover:underline">Sign up</a> today!</p>
-      <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
-        <li class="flex space-x-3">
-          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span class="text-base font-medium leading-tight text-white">Share your thoughts</span>
-        </li>
-        <li class="flex space-x-3">
-          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span class="text-base font-medium leading-tight text-white">Discuss with other members</span>
-        </li>
-        <li class="flex space-x-3">
-          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          <span class="text-base font-medium leading-tight text-white">Share your ideas</span>
-        </li>
-      </ul>
-      <p class="mb-8 font-light lg:text-xl">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.</p>
+  <section class="container flex-col items-end mx-auto flex-wrap hidden md:flex content-start">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <%= image_tag "register.svg", class: "w-4/6 mb-4 mx-auto" %>
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 dark:text-gray-100">Login and start sharing your thoughts!</h2>
+        <p class="mb-6 font-light text-gray-700 dark:text-gray-300 md:text-lg">Now you can also comment on other people's posts! but if you don't have an account, you can sign up for free!</p>
+      </div>
     </div>
   </section>
 </div>
