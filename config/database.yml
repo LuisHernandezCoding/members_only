@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: members_only_production
   username: members_only
   password: <%= ENV["MEMBERS_ONLY_DATABASE_PASSWORD"] %>
